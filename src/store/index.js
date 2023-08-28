@@ -1,23 +1,19 @@
-import Vuex from 'vuex'
-import Vue from 'vue'
+import Vuex from 'vuex';
+import Vue from 'vue';
+import authModule from './modules/auth';
+import createPersistedState from "vuex-persistedstate";
+
+const dataState = createPersistedState({
+    paths: ['auth.token']
+  })
 
 Vue.use(Vuex);
 
-const initialState = {
-    user: null,
-    token: ''
-}
-
 const store = new Vuex.Store({
-    state: {...initialState},
-    mutations: {
-        setUserData( state, userData ) {
-            state.user = userData
-        },
-        setToken( state, token ){
-            state.token = token
-        }
-    }
+    modules: {
+        auth: authModule,
+    },
+    plugins: [ dataState ]
 });
 
 export default store;

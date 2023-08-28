@@ -12,7 +12,7 @@
 
 <script>
 import FooterApartments from './components/FooterApartments.vue';
-import HeaderApartments from './components/HeaderApartments.vue';
+import HeaderApartments from './components/header';
 import Notifications from './components/notifications'
 
 export default {

@@ -52,7 +52,7 @@
     import { emailValidation, passwordValidation, isRequired } from '../../../utils/validationRules';
     import AuthContainer from '../AuthContainer.vue';
     import MainTitle from '../../shared/MainTitle';
-    import { registerUser } from '../../../services/auth.service.js'
+    import { mapActions } from 'vuex';
     
         export default {
             name: 'RegistrationForm',
@@ -101,20 +101,21 @@
                 },
             },
             methods: {
+                ...mapActions('auth', ['registerUser']),
                 async handleSubmit() {
                     const { name, password, email } = this.formData;
                     const { form } = this.$refs;
                     
                     const isFormValid = form.validate();
-                    if (!isFormValid) {
+                    
+                    if (isFormValid) {
                         try {
                             this.loading = true;
-                            const { data } = await registerUser({ name, password, email })
-                            const { user, token } = data;
-                            this.$store.commit( 'setUserData', user );
-                            this.$store.commit( 'setToken', token );
-                            console.log(this.$store.state)
+                           
+                            await this.registerUser( { name, password, email } );
                             
+                            console.log(this.$store.state)
+                            this.$router.push({ name: 'homepage' })
                             form.reset();
                         } catch(error){
                             this.$notify({

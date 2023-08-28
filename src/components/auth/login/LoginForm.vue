@@ -35,7 +35,7 @@ import Button_submit from '../../shared/Button_submit.vue';
 import { emailValidation, passwordValidation, isRequired } from '../../../utils/validationRules';
 import AuthContainer from '../AuthContainer.vue';
 import MainTitle from '../../shared/MainTitle';
-import { loginUser } from '../../../services/auth.service.js'
+import { mapActions } from 'vuex';
 
     export default {
         name: 'LoginForm',
@@ -71,17 +71,17 @@ import { loginUser } from '../../../services/auth.service.js'
             },
         },
         methods: {
+            ...mapActions('auth', ['login']),
             async handleSubmit() {
-                const isFormValid = this.$refs.form.validate();
+                const { form } = this.$refs;
+                const isFormValid = form.validate();
                 if (isFormValid) {
                     try {
                         this.loading = true;
-                        const { data } = await loginUser(this.formData)
-                        const { user, token } = data;
-                            this.$store.commit( 'setUserData', user );
-                            this.$store.commit( 'setToken', token );
-                            console.log(this.$store.state)
-                        console.log(data)
+                       
+                        await this.login(this.formData);
+                            this.$router.push({ name: 'homepage' })
+                            form.reset();
                     } catch(error){
                         this.$notify({
                             type: 'error',
