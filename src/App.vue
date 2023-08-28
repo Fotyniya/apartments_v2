@@ -1,26 +1,40 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div id="app">
+    <Notifications />
+    <div class="content">
+      <HeaderApartments/>
+      <router-view></router-view>
+      <!-- <h2>{{ text }}</h2> -->
+    </div>
+    <FooterApartments/>
+  </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import FooterApartments from './components/FooterApartments.vue';
+import HeaderApartments from './components/HeaderApartments.vue';
+import Notifications from './components/notifications'
 
 export default {
-  name: 'App',
+  name: "App",
   components: {
-    HelloWorld
-  }
-}
+    FooterApartments,
+    HeaderApartments,
+    Notifications
+  },
+};
 </script>
 
 <style>
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  font-family: Montserrat, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+}
+.content {
+  flex-grow: 1;
 }
 </style>
