@@ -6,23 +6,61 @@
         </div>
         <img class="apartment-main-info__photo" :src="apartment.imgUrl" alt="" />
         <p class="apartment-main-info__description">{{ apartment.descr }}</p>
+        <div class="apartment-main-info__btn">
+          <Button_submit @click="handleApartmentsBooking" :loading="isLoading" >
+            Забронировать
+          </Button_submit>
+        </div>
     </article>
 </template>
 
 <script>
 import StarRating from '../StarRating.vue';
+import Button_submit from '../shared/Button_submit.vue';
+import { bookApartment } from '../../services/order.service'
 
     export default {
-        name: 'ApartmentMainInfo',
-        components: {
-            StarRating
-        },
-        props: {
-            apartment: {
-                type: Object,
-                required: true
-            }
+      name: 'ApartmentMainInfo',
+      components: {
+        StarRating,
+        Button_submit
+      },
+      data() {
+        return {
+          isLoading: false,
+        };
+      },
+      props: {
+        apartment: {
+          type: Object,
+          required: true
         }
+      },
+      methods: {
+        async handleApartmentsBooking() {
+          const body = {
+            apartmentId: this.$route.params.id,
+            date: Date.now(),
+          };
+          try {
+            this.isLoading = true;
+            await bookApartment(body);
+
+            this.$notify({
+              type: 'success',
+              title: 'Заказ добавлен',
+            });
+          } catch(error) {
+            this.$notify({
+              type: 'error',
+              title: 'Произошла ошибка',
+              text: error.message,
+            });
+          } finally {
+            this.isLoading = false;
+          }
+        }
+      }
     }
 </script>
 
@@ -47,6 +85,11 @@ import StarRating from '../StarRating.vue';
   &__description {
     line-height: 1.3;
     margin-top: 30px;
+  }
+
+  &__btn {
+    margin-top: 20px;
+    text-align: center;
   }
 }
 </style>

@@ -19,7 +19,6 @@
 
 <script>
 import Container from '../components/shared/Container.vue';
-//import apartments from '../components/Apartments/apartments';
 import ApartmentMainInfo from '../components/Apartments/ApartmentMainInfo';
 import ApartmentsOwner from '../components/Apartments/ApartmentsOwner';
 import Reviews from '../components/reviews'

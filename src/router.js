@@ -1,9 +1,12 @@
-import HomePage from '../src/pages/HomePage'
-import ApartmentPage from '../src/pages/ApartmentPage'
 import ErrorPage from '../src/pages/ErrorPage'
-import LoginPage from '../src/pages/LoginPage'
-import RegistrationPage from '../src/pages/RegistrationPage'
 import VueRouter from 'vue-router'
+import store from './store'
+
+const HomePage = () => import('./pages/HomePage');
+const ApartmentPage = () => import('./pages/ApartmentPage');
+const LoginPage = () => import('./pages/LoginPage');
+const RegistrationPage = () => import('./pages/RegistrationPage');
+const MyOrdersPage = () => import('./pages/MyOrders');
 
 const routes = [
     {
@@ -14,17 +17,34 @@ const routes = [
     {
         path:'/apartments/:id',
         component: ApartmentPage,
-        name: 'apartment'
+        name: 'apartment',
+        meta: {
+            requiresAuth: true,
+        },
+    },
+    {
+        path:'/my-orders',
+        component: MyOrdersPage,
+        name: 'my-orders',
+        meta: {
+            requiresAuth: true,
+        },
     },
     {
         path:'/login',
         component: LoginPage,
-        name: 'login-page'
+        name: 'login-page',
+        meta: {
+            hideForAuth: true,
+        },
     },
     {
         path:'/registration',
         component: RegistrationPage,
-        name: 'registration-page'
+        name: 'registration-page',
+        meta: {
+            hideForAuth: true,
+        },
     },
     {
         path: '*',
@@ -36,6 +56,24 @@ const routes = [
 const router = new VueRouter({
     routes,
     mode: 'history'
-})
+});
+
+router.beforeEach((to, from, next) => {
+    const isLoggedIn = store.getters['auth/isLoggedIn'];
+  
+    if (to.matched.some((record) => record.meta.requiresAuth)) {
+      if (!isLoggedIn) {
+        next({ name: 'login-page' });
+      }
+    }
+  
+    if (to.matched.some((record) => record.meta.hideForAuth)) {
+      if (isLoggedIn) {
+        next({ name: 'homepage' });
+      }
+    }
+  
+    next();
+});
 
 export default router

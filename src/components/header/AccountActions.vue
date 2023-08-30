@@ -22,7 +22,7 @@
                 <router-link class="account-actions__link" :to="{ name: 'my-orders' }">Мои заказы</router-link>
             </li>
             <li class="account-actions__item">
-            <button @click="logout" class="account-actions__logout">
+            <button @click="handleLogout" class="account-actions__logout">
                 Выйти
             </button>
             </li>
@@ -50,6 +50,21 @@ import { mapActions } from 'vuex';
         },
         toggle() {
           this.isOpen = !this.isOpen;
+        },
+        async handleLogout() {
+          try {
+            await this.logout();
+            const { requiresAuth } = this.$route.meta;
+
+            if (requiresAuth) {
+              this.$router.push({ name: 'login-page' });
+            }
+          } catch (error) {
+            this.$notify({
+              type: 'error',
+              title: 'Логаут не удался',
+            });
+          }
         },
       }    
     }
