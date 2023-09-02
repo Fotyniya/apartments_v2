@@ -23,7 +23,7 @@
             placeholder="Password"
             autocomplete="current-password"
         />
-        <Button_submit type="submit" class="login__btn" :loading="loading" >Entrance</Button_submit>
+        <Button_submit type="submit" class="login__btn" :loading="loading" >Log in</Button_submit>
     </Form>
 </AuthContainer>
 </template>

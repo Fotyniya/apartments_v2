@@ -40,7 +40,7 @@
                 :rules="confirmPassword"
                 class="registration__input"
             />
-            <Button_submit type="submit" class="registration__btn" :loading="loading" >Entrance</Button_submit>
+            <Button_submit type="submit" class="registration__btn" :loading="loading" >Registration</Button_submit>
         </Form>
     </AuthContainer>
     </template>

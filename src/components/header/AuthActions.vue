@@ -1,7 +1,7 @@
 <template>
    <div class="auth-actions">
     <router-link class="auth-actions__link" :to="{ name: 'login-page' }">
-      Entrance
+      Log in
     </router-link>
     /
     <router-link class="auth-actions__link" :to="{ name: 'registration-page' }">
