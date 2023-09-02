@@ -1,6 +1,6 @@
 <template>
     <div class="orders-list">
-        <p v-if="!items.length">Заказов нет</p>
+        <p v-if="!items.length">No orders</p>
     <template v-else>
       <OrdersItem
         v-for="order in items"

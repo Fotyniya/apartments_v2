@@ -3,7 +3,7 @@
         <SectionWithHeaderSpacer>
             <Container>
                <section class="my-orders-page__content">
-                    <MainTitle>Заказы</MainTitle>
+                    <MainTitle>Orders</MainTitle>
                     <OrdersList :items="orders" />
                </section> 
             </Container>
@@ -38,7 +38,7 @@ import { getOrders } from '../services/order.service';
             } catch (error) {
                 this.$notify({
                     type: 'error',
-                    title: 'Что-то пошло не так',
+                    title: 'Something wrong',
                     text: error.message,
                 });
             }

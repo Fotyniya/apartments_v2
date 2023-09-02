@@ -1,7 +1,7 @@
 <template>
     <div class="account-actions" @mouseover="open" @mouseleave="close" >
         <button class="account-actions__btn" @click="toggle" >
-            <span class="account-actions__text">профиль</span>
+            <span class="account-actions__text">Profile</span>
             <svg
                 class="account-actions__icon"
                 width="16"
@@ -19,11 +19,11 @@
         </button>
         <ul v-show="isOpen" class="account-actions__list">
             <li class="account-actions__item">
-                <router-link class="account-actions__link" :to="{ name: 'my-orders' }">Мои заказы</router-link>
+                <router-link class="account-actions__link" :to="{ name: 'my-orders' }">My orders</router-link>
             </li>
             <li class="account-actions__item">
             <button @click="handleLogout" class="account-actions__logout">
-                Выйти
+                Go out
             </button>
             </li>
         </ul>
@@ -62,7 +62,7 @@ import { mapActions } from 'vuex';
           } catch (error) {
             this.$notify({
               type: 'error',
-              title: 'Логаут не удался',
+              title: 'Logout failed',
             });
           }
         },

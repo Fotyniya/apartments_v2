@@ -40,7 +40,7 @@
                 :rules="confirmPassword"
                 class="registration__input"
             />
-            <Button_submit type="submit" class="registration__btn" :loading="loading" >Вход</Button_submit>
+            <Button_submit type="submit" class="registration__btn" :loading="loading" >Entrance</Button_submit>
         </Form>
     </AuthContainer>
     </template>
@@ -95,7 +95,7 @@
                     return [
                         (val) => ({
                             hasPassed: val === this.formData.password,
-                            message: 'Пароли не совпадают',
+                            message: 'Password mismatch',
                         }),
                     ];
                 },
@@ -120,7 +120,7 @@
                         } catch(error){
                             this.$notify({
                             type: 'error',
-                            title: 'Произошла ошибка',
+                            title: 'An error has occurred',
                             text: error.message,
                             });
                         } finally {

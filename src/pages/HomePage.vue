@@ -12,9 +12,11 @@
           />
         </Container>
         <Container>
-        <p v-if="!filteredApartments.length" >Ничего не найдено</p>
+        <p v-if="!filteredApartments.length" >Nothing found</p>
         <ApartmentsList v-else :items="filteredApartments">
-          <template v-slot:title>New title</template>
+          <template v-slot:title>
+            <MainTitle>Selection according to choice</MainTitle>
+          </template>
           <template v-slot:apartment="{ apartment }">
             <ApatmentsItem 
               :key="apartment.id"
@@ -38,6 +40,7 @@
   import Container from '../components/shared/Container.vue';
   import { getApartmentsList } from '../services/apartments.service';
   import SectionWithHeaderSpacer from "../components/shared/SectionWithHeaderSpacer";
+  import MainTitle from "../components/shared/MainTitle";
 
   export default {
     name: "App",
@@ -46,7 +49,8 @@
       ApatmentsItem,
       ApartmentFilterForm,
       Container,
-      SectionWithHeaderSpacer
+      SectionWithHeaderSpacer,
+      MainTitle
     },
     data() {
       return {
@@ -66,7 +70,6 @@
     async created() {
         try {
             const { data } = await getApartmentsList();
-            console.log(data)
             this.apartments = data;
         } catch (error) {
             console.error(error);

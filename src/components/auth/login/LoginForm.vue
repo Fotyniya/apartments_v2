@@ -23,7 +23,7 @@
             placeholder="Password"
             autocomplete="current-password"
         />
-        <Button_submit type="submit" class="login__btn" :loading="loading" >Вход</Button_submit>
+        <Button_submit type="submit" class="login__btn" :loading="loading" >Entrance</Button_submit>
     </Form>
 </AuthContainer>
 </template>
@@ -85,7 +85,7 @@ import { mapActions } from 'vuex';
                     } catch(error){
                         this.$notify({
                             type: 'error',
-                            title: 'Произошла ошибка',
+                            title: 'An error has occurred',
                             text: error.message,
                             });
                     } finally {

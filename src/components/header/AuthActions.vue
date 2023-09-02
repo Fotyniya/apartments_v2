@@ -1,20 +1,14 @@
 <template>
    <div class="auth-actions">
     <router-link class="auth-actions__link" :to="{ name: 'login-page' }">
-      Вход
+      Entrance
     </router-link>
     /
     <router-link class="auth-actions__link" :to="{ name: 'registration-page' }">
-      Регистрация
+      Registration
     </router-link>
   </div>
 </template>
-
-<script>
-    export default {
-        
-    }
-</script>
 
 <style lang="scss" scoped>
 @import '../../assets/scss/variables.scss';

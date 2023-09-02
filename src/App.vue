@@ -4,7 +4,6 @@
     <div class="content">
       <HeaderApartments/>
       <router-view></router-view>
-      <!-- <h2>{{ text }}</h2> -->
     </div>
     <FooterApartments/>
   </div>

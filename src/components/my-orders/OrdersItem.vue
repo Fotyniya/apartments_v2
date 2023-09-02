@@ -3,7 +3,7 @@
     <img
       class="orders-item__photo"
       :src="order.imgUrl"
-      alt="фото апартаментов"
+      alt="photo appartments"
     />
     <div class="orders-item__details">
       <div class="orders-item__text">

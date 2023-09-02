@@ -8,7 +8,7 @@
         <p class="apartment-main-info__description">{{ apartment.descr }}</p>
         <div class="apartment-main-info__btn">
           <Button_submit @click="handleApartmentsBooking" :loading="isLoading" >
-            Забронировать
+            Book
           </Button_submit>
         </div>
     </article>
@@ -48,12 +48,12 @@ import { bookApartment } from '../../services/order.service'
 
             this.$notify({
               type: 'success',
-              title: 'Заказ добавлен',
+              title: 'Order added',
             });
           } catch(error) {
             this.$notify({
               type: 'error',
-              title: 'Произошла ошибка',
+              title: 'An error has occurred',
               text: error.message,
             });
           } finally {

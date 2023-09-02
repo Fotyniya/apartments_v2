@@ -1,6 +1,6 @@
 <template>
     <section class="apartments-owner">
-        <h2 class="apartments-owner__title">Информация о владельце:</h2>
+        <h2 class="apartments-owner__title">Owner Information:</h2>
         <p class="apartments-owner__info">{{ owner.name }}</p>
         <p class="apartments-owner__info">tel: {{ owner.phone }}</p>
         <p class="apartments-owner__info">email: {{ owner.email }}</p>
