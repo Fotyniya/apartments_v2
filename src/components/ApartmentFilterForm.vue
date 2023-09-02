@@ -8,7 +8,7 @@
            :rules="rules"
         />
         <SubmitButton class="form__submit" type="submit">
-          Housing selection
+          Selection
         </SubmitButton>
     </form>
 </template>
