@@ -1,11 +1,11 @@
 export const isRequired = (val) => ({
     hasPassed: !!val,
-    message: 'Please fill this field',
+    message: 'Пожалуйста заполните это поле',
   });
   
   export const charLimit = (limit) => (val) => ({
     hasPassed: val.length <= limit,
-    message: 'You have exceeded the limit',
+    message: 'Вы превысили лимит',
   });
 
   export const emailValidation = (val) => ({
@@ -15,5 +15,5 @@ export const isRequired = (val) => ({
   
   export const passwordValidation = (val) => ({
     hasPassed: /^(?=.*[A-Za-z])(?=.*[\d])[a-zA-Z0-9]{7,256}$/.test(val),
-    message: 'Password must contain some letters and one number',
+    message: 'Password must contain letters and numbers, at least 7 characters',
   });
