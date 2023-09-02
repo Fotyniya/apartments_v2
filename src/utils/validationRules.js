@@ -15,5 +15,5 @@ export const isRequired = (val) => ({
   
   export const passwordValidation = (val) => ({
     hasPassed: /^(?=.*[A-Za-z])(?=.*[\d])[a-zA-Z0-9]{7,256}$/.test(val),
-    message: 'Password must contain one number and one character',
+    message: 'Password must contain some letters and one number',
   });
