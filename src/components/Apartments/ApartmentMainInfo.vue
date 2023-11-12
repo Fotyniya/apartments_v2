@@ -8,7 +8,7 @@
         <p class="apartment-main-info__description">{{ apartment.descr }}</p>
         <div class="apartment-main-info__btn">
           <Button_submit @click="handleApartmentsBooking" :loading="isLoading" >
-            Book
+            Booking
           </Button_submit>
         </div>
     </article>

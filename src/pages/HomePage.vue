@@ -71,6 +71,7 @@
         try {
             const { data } = await getApartmentsList();
             this.apartments = data;
+            console.log(data)
         } catch (error) {
             console.error(error);
         }
