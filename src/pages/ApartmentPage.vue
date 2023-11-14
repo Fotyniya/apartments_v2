@@ -22,7 +22,7 @@ import Container from '../components/shared/Container.vue';
 import ApartmentMainInfo from '../components/Apartments/ApartmentMainInfo';
 import ApartmentsOwner from '../components/Apartments/ApartmentsOwner';
 import Reviews from '../components/reviews'
-import reviewsList from '../components/reviews/reviews.json';
+//import reviewsList from '../components/reviews/reviews.json';
 import { getApartmentById } from '../services/apartments.service';
 import SectionWithHeaderSpacer from "../components/shared/SectionWithHeaderSpacer";
 
@@ -38,23 +38,27 @@ import SectionWithHeaderSpacer from "../components/shared/SectionWithHeaderSpace
         data() {
             return {
                 apartment: null,
+                reviewsList: []
             };
         },
-        computed: {
-            reviewsList() {
-                return reviewsList;
-            },
-        },
+        
+        // computed: {
+        //     reviewsList() {
+        //         return reviewsList;
+        //     },
+        // },
         mounted() {
-            console.log (this.apartment)
+            console.log (this.apartment);
         },
         async created() {
             try {
                 const { id } = this.$route.params;
                 const { data } = await getApartmentById(id);
                 this.apartment = data;
+                this.reviewsList = [ ...data.reviews]
+                console.log (this.reviewsList)
             } catch (error) {
-            console.error(error);
+                console.error(error);
             }
         },
     }

@@ -37,20 +37,6 @@ export default {
     rules() {
       return [isRequired, charLimit(10)];
     },
-    // cities() {
-    //   return [
-    //     { value: '', label: 'City', selected: true },
-        
-        // 'Kyiv',
-        // 'Odesa',
-        // 'Poltava',
-        // 'Kharkiv',
-        // 'Dnipro',
-        // 'Lviv',
-        // 'Kherson',
-        // 'Mariupol',
-    //   ];
-    // }, 
   },
   async created(){
     try {

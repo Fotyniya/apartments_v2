@@ -9,7 +9,7 @@
         </div>
         <ReviewsItem 
             v-for="review in currentReviews"
-            :key="review.author"
+            :key="review.id"
             :review="review"
         />
         <button @click="toggleReviews" class="reviews__show-more">

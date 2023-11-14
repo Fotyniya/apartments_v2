@@ -60,6 +60,9 @@ import { bookApartment } from '../../services/order.service'
             this.isLoading = false;
           }
         }
+      },
+      mounted() {
+        console.log(this.apartment)
       }
     }
 </script>
